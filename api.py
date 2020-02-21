@@ -19,7 +19,7 @@ def index():
 
 @bp.route('/reroute')
 def reroute():
-    abort(Response('hi?')
+    abort(Response('hi?'))
     abort(404)
     return redirect(url_for('.hello_with_test', test='123'))
 
