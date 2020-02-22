@@ -4,7 +4,6 @@ from flask import Flask, make_response, jsonify, session, flash, \
 app = Flask(__name__)
 app.config.from_pyfile('config.py')
 
-
 from . import a, b, api
 app.register_blueprint(a.bp, url_prefix='/a')
 app.register_blueprint(b.bp, url_prefix='/b')
