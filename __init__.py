@@ -1,8 +1,9 @@
 from flask import Flask, make_response, jsonify, session, flash, \
-                  get_flashed_messages, request
+                  get_flashed_messages, request, url_for, redirect
 
 app = Flask(__name__)
 app.config.from_pyfile('config.py')
+
 
 from . import a, b, api
 app.register_blueprint(a.bp, url_prefix='/a')
@@ -10,10 +11,12 @@ app.register_blueprint(b.bp, url_prefix='/b')
 app.register_blueprint(api.bp, subdomain='api')
 
 
+
 @app.route('/')
 def index():
     flash('index')
-    return 'index'
+    print(url_for('api.index'))
+    return redirect(url_for('api.index'))
 
 
 @app.route('/1')
